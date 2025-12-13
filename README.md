@@ -10,17 +10,18 @@ to generate static plots and interactive country-level maps.
 ### Example Outputs
 
 #### Yearly Temperature Trend
-![Yearly Trend](data/outputs/yearly_trend.png)
+![Yearly Trend](climate_analyzer/data/outputs/yearly_trend.png)
 
 #### Yearly Anomalies
-![Yearly Anomalies](data/outputs/yearly_anomalies.png)
+![Yearly Anomalies](climate_analyzer/data/outputs/yearly_anomalies.png)
+
+![Interactive Map Video](docs/interactive_country_map_demo.gif)
 
 #### Interactive Country Map
-![Country Map](data/outputs/interactive_country_map.html)
-
-![Interactive Map Video](data/outputs/interactive_country_map_demo.mp4)
+![Interactive Country Map (Live)](https://busracevik.github.io/numpy-climate-analyzer/interactive_country_map.html)
 
 ---
+
 ## Dataset
 This project uses the **Climate Change: Earth Surface Temperature Data** dataset from [Kaggle](https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data).  
 It contains historical land temperature records from around the world, collected and published by Berkeley Earth.  
@@ -53,15 +54,14 @@ The dataset provides daily and monthly temperature observations dating back to t
 ```text
 climate_analyzer/
 │
-├── data/                     # Dataset
-│   └── climate.csv
+├── data/                     # Datasets
+│   ├── climate.csv
+│   └── climate_by_country.csv
 │
 ├── data/outputs/             # Generated files
 │   ├── yearly_summary.csv
 │   ├── yearly_summary.png
 │   ├── yearly_trend.png
-│   ├── interactive_country_map.html
-│   ├── interactive_country_map_demo.mp4
 │   └── yearly_anomalies.png
 │
 ├── src/                      # Modular code
@@ -71,6 +71,10 @@ climate_analyzer/
 │   ├── statistics.py         # Basic statistics functions
 │   ├── trends.py             # Trend analysis functions
 │   └── plotting.py           # Visualization functions
+│
+├── src/                      
+│   ├── interactive_country_map.html
+│   └── interactive_country_map_demo.gif
 │
 ├── main_unmodularized.py     # Original version before modularization
 ├── main.py                   # Modularized version
