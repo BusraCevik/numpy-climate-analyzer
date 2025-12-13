@@ -7,6 +7,13 @@ and time-based aggregation to explore climate change patterns.
 
 ---
 
+## Dataset
+This project uses the **Climate Change: Earth Surface Temperature Data** dataset from [Kaggle](https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data).  
+It contains historical land temperature records from around the world, collected and published by Berkeley Earth.  
+The dataset provides daily and monthly temperature observations dating back to the 1700s, which we use to analyze long‑term trends and anomalies.  
+
+---
+
 ## Features
 - Data cleaning and preprocessing with NumPy  
 - Statistical climate profiling (mean, std, variance, yearly averages)  
