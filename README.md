@@ -12,7 +12,7 @@ and time-based aggregation to explore climate change patterns.
 - Climate anomaly detection using sigma thresholds
 - Yearly temperature aggregation
 - Country-level climate comparison
-
+ 
 ## Technologies
 - Python
 - NumPy
