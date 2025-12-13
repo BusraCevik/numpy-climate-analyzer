@@ -51,7 +51,7 @@ climate_analyzer/
 ├── main_unmodularized.py     # Original version before modularization
 ├── main.py                   # Modularized version
 └── README.md
-
+ ```  
 
 ---
 
