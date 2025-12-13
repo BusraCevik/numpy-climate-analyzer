@@ -18,7 +18,7 @@ to generate static plots and interactive country-level maps.
 ![Interactive Map Video](docs/interactive_country_map_demo.gif)
 
 #### Interactive Country Map
-![Interactive Country Map (Live)](https://busracevik.github.io/numpy-climate-analyzer/interactive_country_map.html)
+[Interactive Country Map (Live)](https://busracevik.github.io/numpy-climate-analyzer/interactive_country_map.html)
 
 ---
 
