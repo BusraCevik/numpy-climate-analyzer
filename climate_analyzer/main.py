@@ -85,7 +85,7 @@ for year in unique_years:
     yearly_std.append(year_sigma)
 
     # Detect anomalies using 2-sigma rule
-    anomalies_mask = np.abs(year_temps - year_mean) > (2 * year_sigma)
+    anomalies_mask = np.abs(year_temps - year_mean) > (2 * year_sigma) #absolute value(tr. mutlak değer)
     anomalies = year_temps[anomalies_mask]
     yearly_anomalies.append(anomalies)
 
@@ -114,6 +114,20 @@ for i in range(5):
 # ===============================
 # LONG-TERM TREND ANALYSIS
 # ===============================
+
+'''
+Performing long-term trend analysis using linear regression.
+y = m*x + b
+- y: yearly average temperatures (yearly_means)
+- x: years as integers (years_numeric)
+- m: slope of the line, represents temperature change per year
+- b: intercept, starting point of the trend line on y-axis
+
+np.polyfit(years_numeric, yearly_means, 1) fits a 1st-degree polynomial (a straight line) 
+to the data. It returns an array of coefficients [m, b].
+trend_slope = coeffs[0] extracts the slope 'm', which shows the long-term annual 
+temperature change.
+'''
 
 # Convert years to numeric for regression
 years_numeric = unique_years.astype(int)
