@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-import numpy as np
+import plotly.express as px
+import os
 
 
 def plot_yearly_trend(unique_years, yearly_means, save_path="data/outputs/yearly_trend.png"):
@@ -39,3 +40,38 @@ def plot_anomalies(unique_years, yearly_means, yearly_anomalies, save_path="data
 
     plt.savefig(save_path)  # save to data/ folder
     plt.show()
+
+
+def plot_yearly_summary(years, yearly_means, yearly_anomalies, yearly_std, output_dir='data/outputs'):
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Trend ve anomalies
+    plt.figure(figsize=(12, 6))
+    plt.plot(years, yearly_means, label='Yearly Mean')
+    plt.fill_between(years, yearly_means - yearly_std, yearly_means + yearly_std, color='orange', alpha=0.2,
+                     label='Std dev')
+    plt.scatter(years, [a[0] if len(a) > 0 else None for a in yearly_anomalies], color='red', label='Anomalies')
+    plt.title('Yearly Mean Temperature with Anomalies')
+    plt.xlabel('Year')
+    plt.ylabel('Temperature (°C)')
+    plt.legend()
+    plt.savefig(os.path.join(output_dir, 'yearly_summary.png'))
+    plt.close()
+
+
+def plot_country_temperature_map(df_country, output_dir='data/outputs'):
+    os.makedirs(output_dir, exist_ok=True)
+    df_yearly = df_country.groupby(['Country', 'Year'], as_index=False)['AverageTemperature'].mean()
+
+    fig = px.choropleth(
+        df_yearly,
+        locations="Country",
+        locationmode="country names",
+        color="AverageTemperature",
+        hover_name="Country",
+        animation_frame="Year",
+        color_continuous_scale=px.colors.sequential.OrRd,
+        title="Average Land Temperature by Country Over Years"
+    )
+    fig.update_layout(coloraxis_colorbar=dict(title="Temp (°C)"), geo=dict(showframe=False, showcoastlines=True))
+    fig.write_html(os.path.join(output_dir, 'interactive_country_map.html'))

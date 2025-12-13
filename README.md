@@ -1,12 +1,26 @@
 # Climate Change Analyzer with NumPy
 
 ## Description
-This project analyzes global land temperature data using only NumPy.  
+This project analyzes global land temperature data using only NumPy (originally designed to work solely with NumPy).  
 It performs statistical analysis, trend estimation, anomaly detection,  
-and time-based aggregation to explore climate change patterns.
+and time-based aggregation to explore climate change patterns. Later, optional visualization features using Matplotlib and Plotly were added 
+to generate static plots and interactive country-level maps.
 
 ---
+### Example Outputs
 
+#### Yearly Temperature Trend
+![Yearly Trend](data/outputs/yearly_trend.png)
+
+#### Yearly Anomalies
+![Yearly Anomalies](data/outputs/yearly_anomalies.png)
+
+#### Interactive Country Map
+![Country Map](data/outputs/interactive_country_map.html)
+
+![Interactive Map Video](data/outputs/interactive_country_map_demo.mp4)
+
+---
 ## Dataset
 This project uses the **Climate Change: Earth Surface Temperature Data** dataset from [Kaggle](https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data).  
 It contains historical land temperature records from around the world, collected and published by Berkeley Earth.  
@@ -30,9 +44,9 @@ The dataset provides daily and monthly temperature observations dating back to t
 - Python 3.x  
 - NumPy  
 - Matplotlib (for visualization)  
+- Plotly
 
 ---
-
 
 ## Project Structure
 
@@ -44,7 +58,10 @@ climate_analyzer/
 │
 ├── data/outputs/             # Generated files
 │   ├── yearly_summary.csv
+│   ├── yearly_summary.png
 │   ├── yearly_trend.png
+│   ├── interactive_country_map.html
+│   ├── interactive_country_map_demo.mp4
 │   └── yearly_anomalies.png
 │
 ├── src/                      # Modular code

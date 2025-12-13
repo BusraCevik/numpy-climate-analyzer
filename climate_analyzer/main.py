@@ -1,11 +1,11 @@
 import numpy as np
-from src.loader import load_data
+from src.loader import load_data, load_country_data
 from src.statistics import basic_statistics
 from src.aggregations import yearly_averages, yearly_change
 from src.anomalies import yearly_anomalies_and_std
 from src.trends import long_term_trend, extreme_years
 from src.utils import save_full_yearly_summary
-from src.plotting import plot_yearly_trend, plot_anomalies
+from src.plotting import plot_yearly_trend, plot_anomalies, plot_yearly_summary, plot_country_temperature_map
 
 
 # 1️⃣ Load and clean data
@@ -70,3 +70,16 @@ plot_yearly_trend(unique_years, yearly_means)
 
 # Anomalies graph
 plot_anomalies(unique_years, yearly_means, yearly_anomalies)
+
+# ===============================
+# OPTIONAL VISUALIZATIONS
+# ===============================
+
+# Trends & anomalies plots (matplotlib)
+plot_yearly_trend(unique_years, yearly_means)               # yearly_trend.png
+plot_anomalies(unique_years, yearly_means, yearly_anomalies) # yearly_anomalies.png
+plot_yearly_summary(unique_years, yearly_means, yearly_anomalies, yearly_std) # yearly_summary_plot.png
+
+# Country-level interactive map (Plotly)
+df_country = load_country_data()
+plot_country_temperature_map(df_country) # interactive_country_map.html
