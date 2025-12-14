@@ -15,10 +15,14 @@ def load_data(filepath ='data/datasets/climate.csv'):
     return dates, temperatures
 
 def load_country_data(filepath='data/datasets/climate_by_country.csv'):
-    import pandas as pd
     df = pd.read_csv(filepath)
     df['dt'] = pd.to_datetime(df['dt'])
     df = df.dropna(subset=['AverageTemperature'])
     df['Year'] = df['dt'].dt.year
     return df
 
+'''
+Pandas is used here because the dataset is table-based and includes datetime operations.
+It allows easy parsing of date columns, removal of missing values, and extraction of
+time components such as the year in a clean and readable way.
+'''

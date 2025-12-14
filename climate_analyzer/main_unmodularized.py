@@ -55,7 +55,7 @@ print("Min temperature:", min_temp)
 years = np.array([date[:4] for date in dates])
 
 unique_years = np.unique(years)
-yearly_means = []
+yearly_means = [] #A Python list is used first because it can grow dynamically, then it is converted to a NumPy array for efficient numerical operations.
 
 # Compute yearly average temperature
 for year in unique_years:
@@ -63,7 +63,7 @@ for year in unique_years:
     yearly_mean = np.mean(temperatures[year_mask])
     yearly_means.append(yearly_mean)
 
-yearly_means = np.array(yearly_means)
+yearly_means = np.array(yearly_means) # adding everything to an array
 
 print("\nFirst 5 yearly averages:")
 for i in range(5):
