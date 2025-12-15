@@ -72,7 +72,7 @@ climate_analyzer/
 │   ├── trends.py             # Trend analysis functions
 │   └── plotting.py           # Visualization functions
 │
-├── src/                      
+├── docs/                      
 │   ├── interactive_country_map.html
 │   └── interactive_country_map_demo.gif
 │
