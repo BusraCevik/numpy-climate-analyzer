@@ -15,10 +15,10 @@ to generate static plots and interactive country-level maps.
 #### Yearly Anomalies
 ![Yearly Anomalies](climate_analyzer/data/outputs/yearly_anomalies.png)
 
-![Interactive Map Video](docs/interactive_country_map_demo.gif)
+![Interactive Map Video](climate_analyzer/docs/interactive_country_map_demo.gif)
 
 #### Interactive Country Map
-<a href="https://busracevik.github.io/numpy-climate-analyzer/interactive_country_map.html" target="_blank">Interactive Country Map (Live)</a>
+<a href="https://busracevik.github.io/numpy-climate-analyzer/index.html" target="_blank">Interactive Country Map (Live)</a>
 
 ---
 
