@@ -67,6 +67,7 @@ def plot_country_temperature_map(df_country, output_dir='docs'):
 
     df_yearly = df_country.groupby(['Country', 'Year'], as_index=False)['AverageTemperature'].mean()
 
+
     temp_min = df_yearly['AverageTemperature'].min()
     temp_max = df_yearly['AverageTemperature'].max()
 
@@ -77,9 +78,14 @@ def plot_country_temperature_map(df_country, output_dir='docs'):
         color="AverageTemperature",
         hover_name="Country",
         animation_frame="Year",
-        color_continuous_scale=px.colors.sequential.OrRd,
-        title="Average Land Temperature by Country Over Years",
-        range_color=[temp_min, temp_max]
+        color_continuous_scale=px.colors.sequential.OrRd
+    )
+
+
+    fig.update_traces(
+        zmin=temp_min,
+        zmax=temp_max,
+        selector=dict(type='choropleth')
     )
 
     fig.update_layout(
