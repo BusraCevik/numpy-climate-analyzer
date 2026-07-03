@@ -80,7 +80,7 @@ climate_analyzer/
 │   ├── interactive_country_map.html
 │   └── interactive_country_map_demo.gif
 │
-├── main_unmodularized.py     # Original version before modularization
+├── main_unmodularized.py     # Initial version before modularization
 ├── main.py                   # Modularized version
 └── README.md
  ```  
