@@ -1,10 +1,12 @@
+import os
 import matplotlib.pyplot as plt
 import plotly.express as px
-import os
 
 
-def plot_yearly_trend(unique_years, yearly_means, save_path="data/outputs/yearly_trend.png"):
-    """Plot yearly average temperature trend and save to file"""
+def plot_yearly_trend(unique_years, yearly_means, save_path):
+    """
+    Plot yearly average temperature trend and save to file.
+    """
     years_numeric = unique_years.astype(int)
 
     plt.figure(figsize=(12, 6))
@@ -15,12 +17,14 @@ def plot_yearly_trend(unique_years, yearly_means, save_path="data/outputs/yearly
     plt.grid(True)
     plt.tight_layout()
 
-    plt.savefig(save_path)  # save to data/ folder
-    plt.show()
+    plt.savefig(save_path)
+    plt.close()
 
 
-def plot_anomalies(unique_years, yearly_means, yearly_anomalies, save_path="data/outputs/yearly_anomalies.png"):
-    """Plot anomalies on top of yearly average temperatures and save to file"""
+def plot_anomalies(unique_years, yearly_means, yearly_anomalies, save_path):
+    """
+    Plot anomalies on top of yearly average temperatures and save to file.
+    """
     years_numeric = unique_years.astype(int)
 
     plt.figure(figsize=(12, 6))
@@ -38,35 +42,37 @@ def plot_anomalies(unique_years, yearly_means, yearly_anomalies, save_path="data
     plt.grid(True)
     plt.tight_layout()
 
-    plt.savefig(save_path)  # save to data/ folder
-    plt.show()
+    plt.savefig(save_path)
+    plt.close()
 
 
-def plot_yearly_summary(years, yearly_means, yearly_anomalies, yearly_std, output_dir='data/outputs'):
-    os.makedirs(output_dir, exist_ok=True)
-
-    # Trend ve anomalies
+def plot_yearly_summary(years, yearly_means, yearly_anomalies, yearly_std, save_path):
+    """
+    Plot a combined summary graph showing mean, standard deviation, and anomalies.
+    """
     plt.figure(figsize=(12, 6))
     plt.plot(years, yearly_means, label='Yearly Mean')
+
+    # Fill the standard deviation area around the mean
     plt.fill_between(years, yearly_means - yearly_std, yearly_means + yearly_std, color='orange', alpha=0.2,
                      label='Std dev')
+
     plt.scatter(years, [a[0] if len(a) > 0 else None for a in yearly_anomalies], color='red', label='Anomalies')
     plt.title('Yearly Mean Temperature with Anomalies')
     plt.xlabel('Year')
     plt.ylabel('Temperature (°C)')
     plt.legend()
-    plt.savefig(os.path.join(output_dir, 'yearly_summary.png'))
+    plt.tight_layout()
+
+    plt.savefig(save_path)
     plt.close()
 
 
-def plot_country_temperature_map(df_country, output_dir='docs'):
-    import os
-    import plotly.express as px
-
-    os.makedirs(output_dir, exist_ok=True)
-
+def plot_country_temperature_map(df_country, save_path):
+    """
+    Generate an interactive animated world map using Plotly and save as HTML.
+    """
     df_yearly = df_country.groupby(['Country', 'Year'], as_index=False)['AverageTemperature'].mean()
-
 
     temp_min = df_yearly['AverageTemperature'].min()
     temp_max = df_yearly['AverageTemperature'].max()
@@ -81,7 +87,6 @@ def plot_country_temperature_map(df_country, output_dir='docs'):
         color_continuous_scale=px.colors.sequential.OrRd
     )
 
-
     fig.update_traces(
         zmin=temp_min,
         zmax=temp_max,
@@ -93,4 +98,4 @@ def plot_country_temperature_map(df_country, output_dir='docs'):
         geo=dict(showframe=False, showcoastlines=True)
     )
 
-    fig.write_html(os.path.join(output_dir, 'index.html'))
+    fig.write_html(save_path)

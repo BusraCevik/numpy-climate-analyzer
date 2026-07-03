@@ -1,7 +1,9 @@
 import numpy as np
 
 def yearly_anomalies_and_std(years, temperatures, unique_years):
-    """ Compute yearly standard deviation and detect anomalies using 2-sigma rule.  """
+    """
+    Calculate yearly standard deviation and find anomalies using the 2-sigma rule.
+    """
     yearly_std = []
     yearly_anomalies = []
 
@@ -13,6 +15,7 @@ def yearly_anomalies_and_std(years, temperatures, unique_years):
         year_sigma = np.std(year_temps)
         yearly_std.append(year_sigma)
 
+        # Detect days where temperature is further than 2 standard deviations from the mean
         anomalies_mask = np.abs(year_temps - year_mean) > (2 * year_sigma)
         anomalies = year_temps[anomalies_mask]
         yearly_anomalies.append(anomalies)
